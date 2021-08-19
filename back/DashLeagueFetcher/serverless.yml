@@ -1,0 +1,23 @@
+service: dashleaguefetcher
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: python3.8
+  profile: default
+  lambdaHashingVersion: 20201221
+  stage: prod
+  region: us-east-1
+
+functions:
+  function:
+    handler: function.handler
+    description: Returns an object containing matchups for Dash League
+    timeout: 30
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
