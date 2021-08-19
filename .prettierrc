@@ -1,0 +1,20 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "singleQuote": true,
+  "semi": true,
+  "trailingComma": "es5",
+  "jsSingleQuote": true,
+  "jsBracketSameLine": false,
+  "jsxSingleQuote": true,
+  "jsxBracketSameLine": false,
+  "tsSingleQuote": true,
+  "tsBracketSameLine": false,
+  "tsxSingleQuote": true,
+  "tsxBracketSameLine": false,
+  "bracketSpacing": true,
+  "importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+  "importOrderSeparation": true,
+  "printWidth": 100,
+  "experimentalBabelParserPluginsList": ["jsx", "typescript"]
+}
