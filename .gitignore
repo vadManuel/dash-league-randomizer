@@ -42,3 +42,5 @@ var/
 
 # Serverless directories
 .serverless
+
+_*

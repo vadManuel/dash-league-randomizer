@@ -3,10 +3,7 @@ import json
 from Fetcher import Fetcher
 from MatchupRandomizer import MatchupRandomizer
 
-# parameters
-n_cycles = 6
-current_season = 3
-current_cycle = 4
+parameter_keys = ['n_cycles', 'current_season', 'current_cycle']
 
 def get_response(statusCode=200, body='', message=''):
     return {
@@ -19,7 +16,22 @@ def get_response(statusCode=200, body='', message=''):
 
 def handler(event, context):
     try:
-        print(event)
+        body = json.loads(event['body'])
+
+        error_message = ''
+
+        # build a string of errors if keys n_cycles, current_season, current_cycle are not in body or type is not int
+        for key in parameter_keys:
+            if 'n_cycles' not in body or not isinstance(body['n_cycles'], int):
+                error_message += f'Key "{key}" missing or is not of type int.\n'
+        
+        if error_message != '':
+            return get_response(400, message=error_message)
+
+        # parameters
+        n_cycles = body['n_cycles']
+        current_season = body['current_season']
+        current_cycle = body['current_cycle']
 
         fetcher = Fetcher(
             current_season=current_season,
